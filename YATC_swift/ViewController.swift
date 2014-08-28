@@ -73,7 +73,6 @@ class ViewController: UIViewController {
         var tipAmount = actualAmount * tipPercent / 100;
         // Update Value
         txtTipAmount.text = String(format: "%.2f", tipAmount);
-        // Update Stepper
         stepTip.value = tipAmount;
         return tipAmount;
     }
@@ -122,7 +121,10 @@ class ViewController: UIViewController {
     
     @IBAction func onTipEdited(sender: AnyObject) {
         stepTip.value = txtTipAmount.text.bridgeToObjectiveC().doubleValue;
-        computeAll();
+        segFoodQuality.selectedSegmentIndex = -1;
+        segServiceQuality.selectedSegmentIndex = -1;
+        var total = computeTotal(stepTip.value);
+        var split = computeSplit(total);
     }
     @IBAction func onTipStepped(sender: AnyObject) {
         // update tip amount with current value

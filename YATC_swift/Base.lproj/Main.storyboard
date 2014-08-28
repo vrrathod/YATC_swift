@@ -54,7 +54,7 @@
                                 <rect key="frame" x="115" y="180" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="onTipEdited:" destination="vXZ-lx-hvc" eventType="editingChanged" id="f43-QD-WcQ"/>
                                 </connections>
