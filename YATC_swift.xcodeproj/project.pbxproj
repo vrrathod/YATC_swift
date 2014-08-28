@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		607D894219AF98D30047E294 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607D894119AF98D30047E294 /* SettingsViewController.swift */; };
 		609961D719AF04420022FC88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609961D619AF04420022FC88 /* AppDelegate.swift */; };
 		609961D919AF04420022FC88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609961D819AF04420022FC88 /* ViewController.swift */; };
 		609961DC19AF04420022FC88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609961DA19AF04420022FC88 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		607D894119AF98D30047E294 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		609961D119AF04420022FC88 /* YATC_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YATC_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609961D519AF04420022FC88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		609961D619AF04420022FC88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		609961D319AF04420022FC88 /* YATC_swift */ = {
 			isa = PBXGroup;
 			children = (
+				607D894119AF98D30047E294 /* SettingsViewController.swift */,
 				609961D619AF04420022FC88 /* AppDelegate.swift */,
 				609961D819AF04420022FC88 /* ViewController.swift */,
 				609961DA19AF04420022FC88 /* Main.storyboard */,
@@ -210,6 +213,7 @@
 			files = (
 				609961D919AF04420022FC88 /* ViewController.swift in Sources */,
 				609961D719AF04420022FC88 /* AppDelegate.swift in Sources */,
+				607D894219AF98D30047E294 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +332,7 @@
 				INFOPLIST_FILE = YATC_swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YATC_swift;
 			};
 			name = Debug;
 		};
@@ -340,7 +344,7 @@
 				INFOPLIST_FILE = YATC_swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YATC_swift;
 			};
 			name = Release;
 		};
@@ -358,7 +362,7 @@
 				);
 				INFOPLIST_FILE = YATC_swiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YATC_swiftTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -373,7 +377,7 @@
 				);
 				INFOPLIST_FILE = YATC_swiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YATC_swiftTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -397,6 +401,7 @@
 				609961EF19AF04420022FC88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		609961F019AF04420022FC88 /* Build configuration list for PBXNativeTarget "YATC_swiftTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +410,7 @@
 				609961F219AF04420022FC88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

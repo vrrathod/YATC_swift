@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         reset();
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
     // segment index to percentage
     func qualityToValue(segment : Int) -> Double {
         var value = 0.00;
@@ -56,11 +56,17 @@ class ViewController: UIViewController {
     
     //// Methods
     func reset() {
+        // default the amount without tip
         txtAmountWithoutTip.text = "100.00";
-        segFoodQuality.selectedSegmentIndex = 1;
-        segServiceQuality.selectedSegmentIndex = 1;
-        lblSplit.text = "1";
-        stepSplit.value = 1;
+
+        // read the quality from previous
+        segFoodQuality.selectedSegmentIndex = savedFoodQualityValue();
+        segServiceQuality.selectedSegmentIndex = savedServiceQualityValue();
+        // read the split from previous
+        stepSplit.value = savedSplitSettings();
+        lblSplit.text = String( Int( stepSplit.value ) ) ;
+        
+        // if tip is saved, read it from previous
         computeAll();
     }
     
@@ -74,6 +80,8 @@ class ViewController: UIViewController {
         // Update Value
         txtTipAmount.text = String(format: "%.2f", tipAmount);
         stepTip.value = tipAmount;
+        // serialize
+        checkAndSaveTipAmount();
         return tipAmount;
     }
     
@@ -90,22 +98,22 @@ class ViewController: UIViewController {
         var splitCount = lblSplit.text.bridgeToObjectiveC().doubleValue;
         var splitValue = total /  splitCount;
         lblYourShare.text = String(format: "$%.2f", splitValue);
+        
+        // serialize : for any change share will be affected
+        checkAndSaveTipAmount();
+        checkAndSaveQualitySettings();
+        checkAndSaveSplitSettings();
+
         return splitValue;
     }
-    /*
-        When we have amount without tip is set, this function shall compute other values.
-        Pre-Set : Amount, Food Quality, Service Quality, Split
-        UI Updates for: Tip, Total Amount, Your share.
-     */
+    
     func computeAll() {
-        
         // compute tip
         var tipAmount = computeTip();
         var total = computeTotal(tipAmount);
         var split = computeSplit(total);
-        
     }
-////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
     @IBAction func onSegmentChange(sender: AnyObject) {
         computeAll();
     }
@@ -137,6 +145,86 @@ class ViewController: UIViewController {
     
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true);
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Saving Defaults
+    func checkAndSaveTipAmount() {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("saveTipAmount") {
+            defaults.setObject(txtTipAmount.text, forKey: "tipAmount");
+            defaults.synchronize();
+        }
+    }
+    
+    func shouldSaveTipAmount() -> Bool {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        return defaults.boolForKey("saveTipAmount");
+    }
+    
+    func savedTipAmount() -> String {
+        var tipAmount = "100";
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("saveTipAmount") {
+            tipAmount = defaults.stringForKey("tipAmount") ;
+        }
+        return tipAmount;
+    }
+    
+    // Quality settings
+    func checkAndSaveQualitySettings() {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("qualitySettings") {
+            defaults.setInteger(segFoodQuality.selectedSegmentIndex, forKey: "foodQuality");
+            defaults.setInteger(segServiceQuality.selectedSegmentIndex, forKey: "serviceQuality");
+            defaults.synchronize();
+        }
+    }
+    
+    func shouldSaveQualitySettings() -> Bool {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        return defaults.boolForKey("qualitySettings");
+    }
+    
+    func savedFoodQualityValue() -> Int {
+        var foodQuality = 1;
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("qualitySettings") {
+            foodQuality = defaults.integerForKey("foodQuality");
+        }
+        return foodQuality;
+    }
+    
+    func savedServiceQualityValue() -> Int {
+        var serviceQuality = 1;
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("qualitySettings") {
+            serviceQuality = defaults.integerForKey("serviceQuality");
+        }
+        return serviceQuality;
+    }
+    
+    // split settings
+    func shouldSaveSplitSettings() -> Bool {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        return defaults.boolForKey("splitSettings");
+    }
+    
+    func checkAndSaveSplitSettings() {
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("splitSettings") {
+            defaults.setDouble(stepSplit.value, forKey: "splitCount");
+            defaults.synchronize();
+        }
+    }
+    
+    func savedSplitSettings() -> Double {
+        var splitVal = 1.0;
+        var defaults = NSUserDefaults.standardUserDefaults();
+        if defaults.boolForKey("splitSettings") {
+            splitVal =  defaults.doubleForKey("splitCount") ;
+        }
+        return splitVal;
     }
 }
 
