@@ -20,11 +20,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblFinalAmount : UILabel!
     @IBOutlet weak var stepTip: UIStepper!
     @IBOutlet weak var stepSplit: UIStepper!
+    // utils class instance
+    let utils = Utils();
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // for the first time, we will need to create required settings, later 
+        utils.initializeDefaultsIfRequired();
         reset();
     }
     
@@ -58,12 +62,11 @@ class ViewController: UIViewController {
     func reset() {
         // default the amount without tip
         txtAmountWithoutTip.text = "100.00";
-
         // read the quality from previous
-        segFoodQuality.selectedSegmentIndex = savedFoodQualityValue();
-        segServiceQuality.selectedSegmentIndex = savedServiceQualityValue();
+        segFoodQuality.selectedSegmentIndex = utils.savedFoodQualityValue();
+        segServiceQuality.selectedSegmentIndex = utils.savedServiceQualityValue();
         // read the split from previous
-        stepSplit.value = savedSplitSettings();
+        stepSplit.value = utils.savedSplitSettings();
         lblSplit.text = String( Int( stepSplit.value ) ) ;
         
         // if tip is saved, read it from previous
@@ -80,8 +83,6 @@ class ViewController: UIViewController {
         // Update Value
         txtTipAmount.text = String(format: "%.2f", tipAmount);
         stepTip.value = tipAmount;
-        // serialize
-        checkAndSaveTipAmount();
         return tipAmount;
     }
     
@@ -100,10 +101,9 @@ class ViewController: UIViewController {
         lblYourShare.text = String(format: "$%.2f", splitValue);
         
         // serialize : for any change share will be affected
-        checkAndSaveTipAmount();
-        checkAndSaveQualitySettings();
-        checkAndSaveSplitSettings();
-
+        utils.checkAndSaveQualitySettings(segFoodQuality.selectedSegmentIndex, service: segServiceQuality.selectedSegmentIndex);
+        utils.checkAndSaveSplitSettings(splitCount);
+        
         return splitValue;
     }
     
@@ -147,84 +147,5 @@ class ViewController: UIViewController {
         view.endEditing(true);
     }
     
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// Saving Defaults
-    func checkAndSaveTipAmount() {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("saveTipAmount") {
-            defaults.setObject(txtTipAmount.text, forKey: "tipAmount");
-            defaults.synchronize();
-        }
-    }
-    
-    func shouldSaveTipAmount() -> Bool {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        return defaults.boolForKey("saveTipAmount");
-    }
-    
-    func savedTipAmount() -> String {
-        var tipAmount = "100";
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("saveTipAmount") {
-            tipAmount = defaults.stringForKey("tipAmount") ;
-        }
-        return tipAmount;
-    }
-    
-    // Quality settings
-    func checkAndSaveQualitySettings() {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("qualitySettings") {
-            defaults.setInteger(segFoodQuality.selectedSegmentIndex, forKey: "foodQuality");
-            defaults.setInteger(segServiceQuality.selectedSegmentIndex, forKey: "serviceQuality");
-            defaults.synchronize();
-        }
-    }
-    
-    func shouldSaveQualitySettings() -> Bool {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        return defaults.boolForKey("qualitySettings");
-    }
-    
-    func savedFoodQualityValue() -> Int {
-        var foodQuality = 1;
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("qualitySettings") {
-            foodQuality = defaults.integerForKey("foodQuality");
-        }
-        return foodQuality;
-    }
-    
-    func savedServiceQualityValue() -> Int {
-        var serviceQuality = 1;
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("qualitySettings") {
-            serviceQuality = defaults.integerForKey("serviceQuality");
-        }
-        return serviceQuality;
-    }
-    
-    // split settings
-    func shouldSaveSplitSettings() -> Bool {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        return defaults.boolForKey("splitSettings");
-    }
-    
-    func checkAndSaveSplitSettings() {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("splitSettings") {
-            defaults.setDouble(stepSplit.value, forKey: "splitCount");
-            defaults.synchronize();
-        }
-    }
-    
-    func savedSplitSettings() -> Double {
-        var splitVal = 1.0;
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if defaults.boolForKey("splitSettings") {
-            splitVal =  defaults.doubleForKey("splitCount") ;
-        }
-        return splitVal;
-    }
 }
 

@@ -199,43 +199,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Tip Amount :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="miK-UM-xWD">
-                                <rect key="frame" x="20" y="95" width="141" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="gyO-Sp-rte">
-                                <rect key="frame" x="251" y="90" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="onSaveTipAmountChanged:" destination="0hy-4S-4jX" eventType="valueChanged" id="oqI-Ay-HGe"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save split settings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s4h-bg-F23">
-                                <rect key="frame" x="20" y="205" width="145" height="21"/>
+                                <rect key="frame" x="20" y="148" width="145" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="bVN-jK-icc">
-                                <rect key="frame" x="251" y="199" width="51" height="31"/>
+                                <rect key="frame" x="251" y="142" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="onSaveSplitSettings:" destination="0hy-4S-4jX" eventType="valueChanged" id="cDl-Fi-vnM"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="ig2-Ah-BZw">
-                                <rect key="frame" x="251" y="144" width="51" height="31"/>
+                                <rect key="frame" x="251" y="87" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="onQualitySettingsChanged:" destination="0hy-4S-4jX" eventType="valueChanged" id="OpQ-Nm-n4P"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save quality settings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HUD-iJ-q97">
-                                <rect key="frame" x="20" y="150" width="164" height="21"/>
+                                <rect key="frame" x="20" y="93" width="164" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -247,6 +233,10 @@
                     <navigationItem key="navigationItem" title="Settings" id="Sn8-DS-yuN">
                         <barButtonItem key="backBarButtonItem" title="YATC" id="iZo-6l-oVg"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="switchQualitySettings" destination="ig2-Ah-BZw" id="8tt-Hv-M80"/>
+                        <outlet property="switchSplitSettings" destination="bVN-jK-icc" id="euX-3y-RgE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZC-iv-meR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,6 +13,7 @@
 		609961DC19AF04420022FC88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609961DA19AF04420022FC88 /* Main.storyboard */; };
 		609961DE19AF04420022FC88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609961DD19AF04420022FC88 /* Images.xcassets */; };
 		609961EA19AF04420022FC88 /* YATC_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609961E919AF04420022FC88 /* YATC_swiftTests.swift */; };
+		60B3E93519AFA0E6007083E0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3E93419AFA0E6007083E0 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		609961E319AF04420022FC88 /* YATC_swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YATC_swiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		609961E819AF04420022FC88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		609961E919AF04420022FC88 /* YATC_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YATC_swiftTests.swift; sourceTree = "<group>"; };
+		60B3E93419AFA0E6007083E0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				607D894119AF98D30047E294 /* SettingsViewController.swift */,
+				60B3E93419AFA0E6007083E0 /* Utils.swift */,
 				609961D619AF04420022FC88 /* AppDelegate.swift */,
 				609961D819AF04420022FC88 /* ViewController.swift */,
 				609961DA19AF04420022FC88 /* Main.storyboard */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B3E93519AFA0E6007083E0 /* Utils.swift in Sources */,
 				609961D919AF04420022FC88 /* ViewController.swift in Sources */,
 				609961D719AF04420022FC88 /* AppDelegate.swift in Sources */,
 				607D894219AF98D30047E294 /* SettingsViewController.swift in Sources */,

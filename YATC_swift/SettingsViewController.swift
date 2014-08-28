@@ -9,11 +9,19 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet weak var switchTipAmount: UISwitch!
+    @IBOutlet weak var switchQualitySettings: UISwitch!
+    @IBOutlet weak var switchSplitSettings: UISwitch!
+    let utils = Utils();
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        switchQualitySettings.on = utils.shouldSaveQualitySettings();
+        switchSplitSettings.on = utils.shouldSaveSplitSettings();
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,32 +29,11 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func onSaveTipAmountChanged(sender: UISwitch) {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setBool(sender.on, forKey: "saveTipAmount");
-        defaults.synchronize();
-    }
-    
     @IBAction func onQualitySettingsChanged(sender: UISwitch) {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setBool(sender.on, forKey: "qualitySettings");
-        defaults.synchronize();
+        utils.updateQualitySettings(sender.on);
     }
 
     @IBAction func onSaveSplitSettings(sender: UISwitch) {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setBool(sender.on, forKey: "splitSettings");
-        defaults.synchronize();
+        utils.updateSplitSettings(sender.on);
     }
 }
