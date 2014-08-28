@@ -41,17 +41,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="PxA-Rn-zft">
-                                <rect key="frame" x="98" y="54" width="202" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" id="PxA-Rn-zft">
+                                <rect key="frame" x="115" y="54" width="185" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="onAmountChanged:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Ocq-mH-EON"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="MVw-c6-cwd">
-                                <rect key="frame" x="98" y="180" width="74" height="30"/>
+                                <rect key="frame" x="115" y="180" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onTipEdited:" destination="vXZ-lx-hvc" eventType="editingChanged" id="f43-QD-WcQ"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SJl-j9-7Ol">
                                 <rect key="frame" x="98" y="228" width="74" height="21"/>
@@ -69,6 +75,9 @@
                                     <segment title="Good"/>
                                     <segment title="Loved"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onSegmentChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="YgP-gJ-GsD"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="G0h-PY-O9t">
                                 <rect key="frame" x="98" y="140" width="202" height="29"/>
@@ -79,14 +88,24 @@
                                     <segment title="Good"/>
                                     <segment title="Loved"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onSegmentChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="owk-yw-4vF"/>
+                                </connections>
                             </segmentedControl>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="xDA-RJ-ea7">
                                 <rect key="frame" x="200" y="180" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onTipStepped:" destination="vXZ-lx-hvc" eventType="valueChanged" id="jw7-RH-EKM"/>
+                                </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="0ux-KN-YgU">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="20" id="0ux-KN-YgU">
                                 <rect key="frame" x="200" y="224" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onSegmentChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="IhW-1d-5Mk"/>
+                                    <action selector="onSplitChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Sx9-6k-tGm"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Share :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aNv-GU-irk">
                                 <rect key="frame" x="20" y="273" width="94" height="21"/>
@@ -116,6 +135,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LG7-FM-kEq">
+                                <rect key="frame" x="98" y="57" width="10" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YMV-85-leK">
+                                <rect key="frame" x="98" y="184" width="10" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CR9-Sh-UL5">
                                 <rect key="frame" x="20" y="143" width="67" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -125,9 +158,29 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Em4-83-1Ww" appends="YES" id="WOl-So-LG8"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="lblFinalAmount" destination="ykF-Kx-dHS" id="svX-Nt-6K3"/>
+                        <outlet property="lblSplit" destination="SJl-j9-7Ol" id="EvZ-tj-4Xx"/>
+                        <outlet property="lblYourShare" destination="6X0-uF-FjF" id="adv-6d-AI7"/>
+                        <outlet property="segFoodQuality" destination="FPP-uu-TOM" id="Yce-yg-NVJ"/>
+                        <outlet property="segServiceQuality" destination="G0h-PY-O9t" id="FX7-mq-JJP"/>
+                        <outlet property="stepSplit" destination="0ux-KN-YgU" id="747-yf-CGo"/>
+                        <outlet property="stepTip" destination="xDA-RJ-ea7" id="2sI-OP-WZf"/>
+                        <outlet property="txtAmountWithoutTip" destination="PxA-Rn-zft" id="K3p-6u-SoQ"/>
+                        <outlet property="txtTipAmount" destination="MVw-c6-cwd" id="b2R-vR-6zf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Em4-83-1Ww">
+                    <connections>
+                        <action selector="onTap:" destination="vXZ-lx-hvc" id="ye3-gm-NzA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="234" y="360"/>
         </scene>
